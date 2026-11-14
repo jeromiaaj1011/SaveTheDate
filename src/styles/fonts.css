@@ -1,0 +1,65 @@
+/**
+ * TYPOGRAPHY CONFIGURATION
+ * 
+ * Target font: Rosalina
+ * When the proprietary Rosalina webfont files (.woff2 / .woff) are provided,
+ * place them in `/public/fonts/Rosalina.woff2` and `/public/fonts/Rosalina.woff`.
+ * The @font-face declaration below will automatically bind to it.
+ * 
+ * In the absence of the Rosalina font file, the typography falls back to
+ * 'Cinzel Decorative', 'Cinzel' and 'Cormorant Garamond', preserving
+ * the high-contrast royal serif structure, decorative swashes, and regal proportions.
+ */
+
+@font-face {
+  font-family: 'Rosalina';
+  src: local('Rosalina'),
+       local('Rosalina Regular'),
+       local('Rosalina-Regular');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rosalina';
+  src: local('Rosalina Bold'),
+       local('Rosalina-Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Typography Utility Classes */
+.font-heading,
+.font-rosalina {
+  font-family: var(--font-heading);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-feature-settings: "swsh" 1, "dlig" 1;
+}
+
+.font-couple {
+  font-family: var(--font-couple);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}

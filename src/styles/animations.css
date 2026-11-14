@@ -1,0 +1,131 @@
+/* Keyframe Animations for Cinematic Wedding Invitation */
+
+@keyframes waxPulse {
+  0%, 100% {
+    box-shadow: 0 8px 24px rgba(176, 138, 74, 0.4), 0 2px 6px rgba(41, 40, 42, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 12px 32px rgba(176, 138, 74, 0.65), 0 0 16px rgba(232, 213, 183, 0.5);
+    transform: scale(1.025);
+  }
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes wingFlutterLeft {
+  0%, 100% {
+    transform: rotateY(0deg) skewY(0deg);
+  }
+  50% {
+    transform: rotateY(65deg) skewY(-10deg);
+  }
+}
+
+@keyframes wingFlutterRight {
+  0%, 100% {
+    transform: rotateY(0deg) skewY(0deg);
+  }
+  50% {
+    transform: rotateY(-65deg) skewY(10deg);
+  }
+}
+
+@keyframes gentleDrift {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.01);
+  }
+}
+
+@keyframes dustFloat {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120px) translateX(25px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Butterfly Animation Classes */
+.butterfly-wing-left {
+  transform-origin: right center;
+  animation: wingFlutterLeft 1.2s ease-in-out infinite;
+}
+
+.butterfly-wing-right {
+  transform-origin: left center;
+  animation: wingFlutterRight 1.2s ease-in-out infinite;
+}
+
+.gentle-drift {
+  animation: gentleDrift 6s ease-in-out infinite;
+}
+
+.wax-interactive {
+  cursor: pointer;
+  animation: waxPulse 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.wax-interactive:hover {
+  transform: scale(1.05);
+}
+
+.gold-text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-antique-gold) 0%,
+    var(--color-champagne-gold-light) 50%,
+    var(--color-antique-gold) 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: goldShimmer 6s linear infinite;
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .butterfly-wing-left,
+  .butterfly-wing-right,
+  .gentle-drift,
+  .wax-interactive,
+  .gold-text-shimmer {
+    animation: none !important;
+  }
+}

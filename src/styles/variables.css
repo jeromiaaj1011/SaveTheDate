@@ -1,0 +1,63 @@
+:root {
+  /* Exact Wedding Base Palette */
+  --color-warm-ivory: #F7F1E7;
+  --color-warm-ivory-light: #FDFAF5;
+  --color-warm-ivory-dark: #EADBCC;
+  
+  --color-sage-green: #82968B;
+  --color-sage-green-light: #9BB0A5;
+  --color-sage-green-dark: #586F63;
+  --color-sage-green-deep: #40544A;
+
+  --color-deep-teal: #315B56;
+  --color-deep-teal-light: #3D6F69;
+  --color-deep-teal-dark: #22423E;
+
+  --color-champagne-gold: #E8D5B7;
+  --color-champagne-gold-light: #F5ECD9;
+  --color-champagne-gold-dark: #CBB48E;
+
+  --color-antique-gold: #B08A4A;
+  --color-antique-gold-light: #C9A564;
+  --color-antique-gold-dark: #8F6D33;
+
+  --color-dusty-rose: #C99491;
+  --color-dusty-rose-light: #DDB0AE;
+  --color-dusty-rose-blush: #F4E4E2;
+  --color-dusty-rose-dark: #A8716E;
+
+  --color-classic-black: #29282A;
+  --color-charcoal-muted: #4A484C;
+
+  /* Refined Luxury Gradient Variations */
+  --grad-dusty-rose-blush: linear-gradient(135deg, #C99491 0%, #DDB0AE 45%, #F4E4E2 100%);
+  --grad-dusty-rose-stationery: radial-gradient(ellipse at 50% 0%, rgba(253, 250, 245, 0.95) 0%, rgba(248, 242, 233, 0.88) 25%, rgba(232, 208, 199, 0.78) 55%, rgba(197, 143, 145, 0.82) 85%, #B87B7E 100%), linear-gradient(180deg, #F8F2E9 0%, #E8D0C7 25%, #D9AFAC 55%, #C58F91 85%, #B87B7E 100%);
+  --grad-ivory-champagne: linear-gradient(145deg, #FDFAF5 0%, #F7F1E7 40%, #E8D5B7 100%);
+  --grad-sage-deep-teal: linear-gradient(135deg, #82968B 0%, #586F63 45%, #315B56 100%);
+  --grad-antique-gold: linear-gradient(135deg, #D4A759 0%, #B08A4A 50%, #87652B 100%);
+  --grad-gold-rim: linear-gradient(90deg, #B08A4A, #F5ECD9, #B08A4A);
+
+  /* Restored Authentic Typography Stacks (Pre-Bodoni) */
+  --font-couple: 'Cinzel', 'Cinzel Decorative', 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Pinyon Script', cursive;
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-display: 'Cinzel', 'Cinzel Decorative', serif;
+  --font-heading: 'Rosalina', 'Cinzel Decorative', 'Cinzel', serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Dimensional Shadows */
+  --shadow-envelope: 0 25px 60px -15px rgba(49, 91, 86, 0.3), 0 12px 30px rgba(41, 40, 42, 0.15);
+  --shadow-envelope-flap: 0 15px 35px rgba(0, 0, 0, 0.22);
+  --shadow-wax: 0 8px 24px rgba(143, 109, 51, 0.45), 0 2px 6px rgba(41, 40, 42, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  --shadow-card: 0 22px 50px -12px rgba(41, 40, 42, 0.14), 0 4px 18px rgba(176, 138, 74, 0.1);
+  --shadow-gold-glow: 0 0 20px rgba(232, 213, 183, 0.6);
+
+  /* Borders */
+  --border-gold-thin: 1px solid var(--color-champagne-gold);
+  --border-gold-double: 3px double var(--color-champagne-gold);
+  --border-antique-gold: 1px solid var(--color-antique-gold);
+
+  /* Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-cinematic: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}

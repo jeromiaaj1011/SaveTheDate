@@ -1,122 +1,98 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { weddingDetails } from './config/weddingDetails';
+import { Envelope } from './components/Envelope';
+import { AmbientAudio } from './components/AmbientAudio';
+import { InvitationReveal } from './sections/InvitationReveal';
+import { CoupleSection } from './sections/CoupleSection';
+import { SaveTheDate } from './sections/SaveTheDate';
+import { WeddingSection } from './sections/WeddingSection';
+import { ReceptionSection } from './sections/ReceptionSection';
+import { LocationSection } from './sections/LocationSection';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
+
+  const handleEnvelopeOpen = () => {
+    setIsEnvelopeOpen(true);
+    // Smooth scroll down into the invitation reveal after card emerges
+    setTimeout(() => {
+      const target = document.getElementById('invitation-reveal');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 1800);
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="wedding-app-root" style={{ width: '100%', minHeight: '100vh', position: 'relative' }}>
+      {/* Ambient Audio Player: Taylor Swift - Love Story */}
+      <AmbientAudio />
 
-      <div className="ticks"></div>
+      {/* SCENE 1 — THE SEALED ENVELOPE (With Physical Emerging Card) */}
+      <Envelope
+        isOpen={isEnvelopeOpen}
+        onOpen={handleEnvelopeOpen}
+        verseText={weddingDetails.bibleVerse.text}
+        verseRef={weddingDetails.bibleVerse.reference}
+        monogram={weddingDetails.couple.monogram}
+      />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      {/* CONTINUOUS WEDDING INVITATION FLOW */}
+      <main id="main-invitation-flow" style={{ width: '100%', position: 'relative' }}>
+        {/* SCENE 2 — YOU'RE CORDIALLY INVITED (Distinctive Rosalina Heading) */}
+        <InvitationReveal />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        {/* SCENE 3 — THE COUPLE (Cinzel & Pinyon Script) */}
+        <CoupleSection
+          tagline={weddingDetails.couple.tagline}
+          groom={weddingDetails.couple.groom}
+          bride={weddingDetails.couple.bride}
+        />
+
+        {/* SCENE 4 — INTERACTIVE SAVE THE DATE (SCRATCH CARD) */}
+        <SaveTheDate
+          dayOfWeek={weddingDetails.date.dayOfWeek}
+          day={weddingDetails.date.day}
+          month={weddingDetails.date.month}
+          year={weddingDetails.date.year}
+          time={weddingDetails.ceremony.timeDisplay}
+          venue={`${weddingDetails.ceremony.venueName}, ${weddingDetails.ceremony.location}`}
+        />
+
+        {/* SCENE 5 — THE WEDDING CEREMONY */}
+        <WeddingSection
+          title={weddingDetails.ceremony.title}
+          dateText={weddingDetails.date.fullDateText}
+          time={weddingDetails.ceremony.timeDisplay}
+          timeDescription={weddingDetails.ceremony.timeDescription}
+          venueName={weddingDetails.ceremony.venueName}
+          location={weddingDetails.ceremony.location}
+          addressFull={weddingDetails.ceremony.addressFull}
+          mapsUrl={weddingDetails.ceremony.mapsUrl}
+          qrLabel={weddingDetails.ceremony.qrLabel}
+        />
+
+        {/* SCENE 6 — THE RECEPTION */}
+        <ReceptionSection
+          title={weddingDetails.reception.title}
+          dateText={weddingDetails.date.fullDateText}
+          time={weddingDetails.reception.timeDisplay}
+          timeDescription={weddingDetails.reception.timeDescription}
+          venueName={weddingDetails.reception.venueName}
+          location={weddingDetails.reception.location}
+          addressFull={weddingDetails.reception.addressFull}
+          mapsUrl={weddingDetails.reception.mapsUrl}
+          qrLabel={weddingDetails.reception.qrLabel}
+        />
+
+        {/* SCENE 7 — FIND YOUR WAY & CLOSING */}
+        <LocationSection
+          heading={weddingDetails.closing.title}
+          signature={weddingDetails.closing.signature}
+          ceremony={weddingDetails.ceremony}
+          reception={weddingDetails.reception}
+        />
+      </main>
+    </div>
+  );
 }
-
-export default App
